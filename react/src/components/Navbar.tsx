@@ -1,5 +1,8 @@
 import { useState } from "react";
 import { Menu, X } from "lucide-react";
+import NavList from "./NavList";
+import { NavLink } from "react-router";
+// import {  NavLink } from "react-router";
 
 export default function Navbar() {
   const [isOpen, setIsOpen] = useState(false);
@@ -13,23 +16,7 @@ export default function Navbar() {
         <div className="font-semibold text-xl">Ticketrax</div>
 
         {/* Desktop Links */}
-        <ul className="hidden md:flex items-center gap-8 text-sm">
-          <li>
-            <a href="#home" className="hover:text-blue-300 transition">
-              Home
-            </a>
-          </li>
-          <li>
-            <a href="#features" className="hover:text-blue-300 transition">
-              Features
-            </a>
-          </li>
-          <li>
-            <a href="#tickets" className="hover:text-blue-300 transition">
-              Tickets
-            </a>
-          </li>
-        </ul>
+        <NavList />
 
         {/* CTA Buttons (Desktop) */}
         <div className="hidden md:flex items-center gap-3">
@@ -59,9 +46,9 @@ export default function Navbar() {
           <a href="#features" className="block hover:text-blue-300 transition">
             Features
           </a>
-          <a href="#tickets" className="block hover:text-blue-300 transition">
+          <NavLink to="/tickets" className="hover:text-blue-300 transition">
             Tickets
-          </a>
+          </NavLink>
 
           {/* CTA Buttons (Mobile) */}
           <div className="pt-3 border-t text-white border-white/20 space-y-2">

@@ -1,3 +1,5 @@
+import NavList from "./NavList";
+
 export default function Footer() {
   return (
     <footer className="bg-blue-900 backdrop-blur-md border-t border-white/20 mt-20 py-8 text-center text-white">
@@ -6,23 +8,7 @@ export default function Footer() {
         <div className="flex flex-col md:flex-row justify-between items-center gap-6 mb-6">
           <div className="font-semibold text-xl">Ticketrax</div>
 
-          <ul className="flex flex-wrap justify-center gap-6 text-sm">
-            <li>
-              <a href="#home" className="hover:text-blue-300 transition">
-                Home
-              </a>
-            </li>
-            <li>
-              <a href="#features" className="hover:text-blue-300 transition">
-                Features
-              </a>
-            </li>
-            <li>
-              <a href="#tickets" className="hover:text-blue-300 transition">
-                Tickets
-              </a>
-            </li>
-          </ul>
+          <NavList />
 
           {/* CTA */}
           <a
