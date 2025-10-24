@@ -8,6 +8,10 @@ body{
   max-width: 1440px;
 }
 
+html{
+  scroll-behavior: smooth;
+}
+
 .hero {
   position: relative;
   display: flex;

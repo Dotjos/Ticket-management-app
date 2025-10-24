@@ -13,7 +13,10 @@ const HomePage = () => {
         <Navbar />
 
         {/* <!-- Hero Content --> */}
-        <div className="relative z-10 flex flex-col items-center justify-center min-h-[80vh] text-center px-4">
+        <div
+          id="home"
+          className="relative z-10 flex flex-col items-center justify-center min-h-[80vh] text-center px-4"
+        >
           <h1 className="text-5xl font-bold mb-4">Ticketrax</h1>
           <p className="text-lg max-w-xl mb-6">
             Manage, track, and resolve tickets efficiently — across all teams.

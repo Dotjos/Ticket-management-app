@@ -6,7 +6,9 @@ import { NavLink } from "react-router";
 
 export default function Navbar() {
   const [isOpen, setIsOpen] = useState(false);
+
   const toggleMenu = () => setIsOpen(!isOpen);
+  const closeMenu = () => setIsOpen(false);
 
   return (
     <nav className="fixed top-4 left-1/2 -translate-x-1/2 z-50 w-[90%] lg:w-4/5">
@@ -39,11 +41,19 @@ export default function Navbar() {
 
       {/* Mobile Dropdown */}
       {isOpen && (
-        <div className="md:hidden mt-2 bg-white/10 backdrop-blur-md border border-white/20 rounded-2xl shadow-lg py-4 px-6 text-white text-sm space-y-3">
-          <a href="#home" className="block hover:text-blue-300 transition">
+        <div className="md:hidden mt-2 b bg-deep-blue backdrop-blur-md border border-white/20 rounded-2xl shadow-lg py-4 px-6 text-white text-sm space-y-3">
+          <a
+            href="#home"
+            onClick={closeMenu}
+            className="block hover:text-blue-300 transition"
+          >
             Home
           </a>
-          <a href="#features" className="block hover:text-blue-300 transition">
+          <a
+            href="#features"
+            onClick={closeMenu}
+            className="block hover:text-blue-300 transition"
+          >
             Features
           </a>
           <NavLink to="/tickets" className="hover:text-blue-300 transition">
