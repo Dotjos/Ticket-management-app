@@ -1,0 +1,15 @@
+import { Navigate } from "react-router";
+
+interface ProtectedRouteProps {
+  children: React.ReactNode;
+}
+
+export default function ProtectedRoute({ children }: ProtectedRouteProps) {
+  const session = localStorage.getItem("ticketapp_session");
+
+  if (!session) {
+    return <Navigate to="/auth/login" replace />;
+  }
+
+  return <>{children}</>;
+}
