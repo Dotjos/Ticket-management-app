@@ -8,7 +8,7 @@ export default function Dashboard() {
 
   const logout = () => {
     localStorage.removeItem("ticketapp_session");
-    navigate("/auth/login");
+    navigate("/");
   };
 
   return (

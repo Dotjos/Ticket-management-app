@@ -67,7 +67,7 @@ export default function Navbar() {
           </NavLink>
 
           {/* CTA Buttons (Mobile) */}
-          <div className="pt-3 border-t text-white border-white/20 space-y-2">
+          <div className="pt-3 border-t flex flex-col text-white border-white/20 space-y-2">
             <NavLink
               to="auth/login"
               className="px-5 py-2 rounded-full border border-blue-400 text-blue-300 hover:bg-blue-400 hover:text-white transition"
