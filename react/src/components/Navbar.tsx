@@ -11,7 +11,7 @@ export default function Navbar() {
   const closeMenu = () => setIsOpen(false);
 
   return (
-    <nav className="fixed top-4 left-1/2 -translate-x-1/2 z-50 w-[90%] lg:w-4/5">
+    <nav className="fixed top-4 left-1/2 -translate-x-1/2 z-50 w-full max-w-[1200px] px-4">
       {/* Navbar Container */}
       <div className="bg-blue-900 backdrop-blur-md border border-white/20 shadow-lg flex items-center justify-between px-6 py-3 rounded-full md:px-10 md:py-2 lg:py-4 text-white">
         {/* Logo */}
@@ -22,12 +22,18 @@ export default function Navbar() {
 
         {/* CTA Buttons (Desktop) */}
         <div className="hidden md:flex items-center gap-3">
-          <button className="px-5 py-2 rounded-full border border-blue-400 text-blue-300 hover:bg-blue-400 hover:text-white transition">
+          <NavLink
+            to="auth/login"
+            className="px-5 py-2 rounded-full border border-blue-400 text-blue-300 hover:bg-blue-400 hover:text-white transition"
+          >
             Login
-          </button>
-          <button className="px-5 py-2 rounded-full bg-blue-400 text-white hover:bg-blue-500 transition">
-            Get Started
-          </button>
+          </NavLink>
+          <NavLink
+            to="auth/signup"
+            className="px-5 py-2 rounded-full bg-blue-400 text-white hover:bg-blue-500 transition"
+          >
+            Get started
+          </NavLink>
         </div>
 
         {/* Mobile Menu Toggle */}
@@ -62,12 +68,18 @@ export default function Navbar() {
 
           {/* CTA Buttons (Mobile) */}
           <div className="pt-3 border-t text-white border-white/20 space-y-2">
-            <button className="w-full px-5 py-2 rounded-full border bg-blue-400 border-blue-400 hover:bg-blue-400 hover:text-white transition">
+            <NavLink
+              to="auth/login"
+              className="px-5 py-2 rounded-full border border-blue-400 text-blue-300 hover:bg-blue-400 hover:text-white transition"
+            >
               Login
-            </button>
-            <button className="w-full px-5 py-2 rounded-full bg-blue-400  hover:bg-blue-500 transition">
-              Get Started
-            </button>
+            </NavLink>
+            <NavLink
+              to="auth/signup"
+              className="px-5 py-2 rounded-full bg-blue-400 text-white hover:bg-blue-500 transition"
+            >
+              Get started
+            </NavLink>
           </div>
         </div>
       )}
