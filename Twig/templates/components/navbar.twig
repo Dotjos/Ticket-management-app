@@ -1,0 +1,90 @@
+<nav 
+  x-data="{ 
+    isOpen: false,
+    toggleMenu() {
+      this.isOpen = !this.isOpen;
+      document.body.style.overflow = this.isOpen ? 'hidden' : '';
+      const main = document.querySelector('main');
+      if (main) main.style.filter = this.isOpen ? 'blur(8px)' : '';
+    },
+    closeMenu() {
+      this.isOpen = false;
+      document.body.style.overflow = '';
+      const main = document.querySelector('main');
+      if (main) main.style.filter = '';
+    }
+  }" 
+  class="fixed top-4 left-1/2 -translate-x-1/2 z-50 w-full max-w-[1200px] px-4"
+>
+  <!-- Navbar Container -->
+  <div class="bg-blue-900 backdrop-blur-md border border-white/20 shadow-lg flex items-center justify-between px-6 py-3 rounded-full md:px-10 md:py-2 lg:py-4 text-white">
+    
+    <!-- Logo -->
+    <div class="font-semibold text-xl">Ticketrax</div>
+
+    <!-- Desktop Links -->
+    <ul class="hidden md:flex items-center gap-8 text-sm">
+      <li><a href="#home" class="hover:text-blue-300 transition">Home</a></li>
+      <li><a href="#features" class="hover:text-blue-300 transition">Features</a></li>
+      <li><a href="/tickets" class="hover:text-blue-300 transition">Tickets</a></li>
+    </ul>
+
+    <!-- CTA Buttons (Desktop) -->
+    <div class="hidden md:flex items-center gap-3">
+      <a href="?page=login" class="px-5 py-2 rounded-full border border-blue-400 text-blue-300 hover:bg-blue-400 hover:text-white transition">        
+        Login
+      </a>
+      <a href="?page=signup" class="px-5 py-2 rounded-full bg-blue-400 text-white hover:bg-blue-500 transition">
+        Get started
+      </a>
+    </div>
+
+    <!-- Mobile Toggle -->
+    <button 
+      @click="toggleMenu()" 
+      class="md:hidden p-2 rounded-full bg-white/10 hover:bg-white/20 transition"
+      aria-label="Toggle Menu"
+    >
+      <template x-if="!isOpen">
+        <svg xmlns="http://www.w3.org/2000/svg" class="w-6 h-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+          <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16" />
+        </svg>
+      </template>
+      <template x-if="isOpen">
+        <svg xmlns="http://www.w3.org/2000/svg" class="w-6 h-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+          <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12" />
+        </svg>
+      </template>
+    </button>
+  </div>
+
+  <!-- Mobile Overlay (locks background scroll) -->
+  <div 
+    x-show="isOpen"
+    x-transition.opacity
+    class="fixed inset-0 md:hidden"
+    @click="closeMenu()"
+  ></div>
+
+  <!-- Mobile Dropdown -->
+  <div 
+    x-show="isOpen"
+    x-transition
+    @click.away="closeMenu()"
+    class="md:hidden mt-2 bg-deep-blue backdrop-blur-md border border-white/20 rounded-2xl shadow-lg py-4 px-6 text-white text-sm space-y-3 relative z-50"
+  >
+    <a href="#home" @click="closeMenu()" class="block hover:text-blue-300 transition">Home</a>
+    <a href="#features" @click="closeMenu()" class="block hover:text-blue-300 transition">Features</a>
+    <a href="/tickets" @click="closeMenu()" class="block hover:text-blue-300 transition">Tickets</a>
+
+    <!-- CTA Buttons (Mobile) -->
+    <div class="pt-3 border-t flex flex-col text-white border-white/20 space-y-2">
+      <a href="?page=login" @click="closeMenu()" class="px-5 py-2 rounded-full border border-blue-400 text-blue-300 hover:bg-blue-400 hover:text-white transition">
+        Login
+      </a>
+      <a href="?page=signup" @click="closeMenu()" class="px-5 py-2 rounded-full bg-blue-400 text-white hover:bg-blue-500 transition">
+        Get started
+      </a>
+    </div>
+  </div>
+</nav>
