@@ -69,7 +69,9 @@ const handleSubmit = (): void => {
   }
 
   // Mock signup
-  localStorage.setItem("ticketapp_session", "mock_token");
+  // localStorage.setItem("ticketapp_session", "mock_token");
+  const sessionCookie = useCookie('ticketapp_session');
+  sessionCookie.value = "mock_token"; // Store the token
   toast.add({title:'Signup successful! Redirecting...',
    color:'success'
 })

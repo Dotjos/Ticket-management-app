@@ -10,6 +10,7 @@ export default defineNuxtRouteMiddleware((to, from) => {
 
 function checkIfUserIsAuthenticated() {
   const sessionCookie = useCookie("ticketapp_session");
+  console.log(sessionCookie.value === "mock_token");
 
-  return sessionCookie;
+  return sessionCookie.value === "mock_token";
 }
