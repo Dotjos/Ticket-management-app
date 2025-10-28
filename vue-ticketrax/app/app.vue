@@ -25,7 +25,8 @@ html{
 
 body{ font-family: "Inconsolata", sans-serif;
 background-color: white;
-
+color: black;
+max-width: 1440px;
 }
 
 @theme {
