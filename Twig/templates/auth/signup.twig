@@ -1,0 +1,160 @@
+{% extends "layouts/auth_layout.twig" %}
+
+{% block content %}
+<form id="signupForm" method="post" class="space-y-5">
+  <!-- Full Name -->
+  <div>
+    <label for="name" class="block text-sm text-gray-600 mb-1">Full Name</label>
+    <input
+      id="name"
+      name="name"
+      type="text"
+      placeholder="John Doe"
+      class="w-full px-4 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-600 outline-none"
+    />
+    <p id="nameError" class="hidden text-red-500 text-sm mt-1"></p>
+  </div>
+
+  <!-- Email -->
+  <div>
+    <label for="email" class="block text-sm text-gray-600 mb-1">Email</label>
+    <input
+      id="email"
+      name="email"
+      type="email"
+      placeholder="name@example.com"
+      class="w-full px-4 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-600 outline-none"
+    />
+    <p id="emailError" class="hidden text-red-500 text-sm mt-1"></p>
+  </div>
+
+  <!-- Password -->
+  <div>
+    <label for="password" class="block text-sm text-gray-600 mb-1">Password</label>
+    <input
+      id="password"
+      name="password"
+      type="password"
+      placeholder="••••••••"
+      class="w-full px-4 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-600 outline-none"
+    />
+    <p id="passwordError" class="hidden text-red-500 text-sm mt-1"></p>
+  </div>
+
+  <!-- Confirm Password -->
+  <div>
+    <label for="confirmPassword" class="block text-sm text-gray-600 mb-1">Confirm Password</label>
+    <input
+      id="confirmPassword"
+      name="confirmPassword"
+      type="password"
+      placeholder="••••••••"
+      class="w-full px-4 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-600 outline-none"
+    />
+    <p id="confirmPasswordError" class="hidden text-red-500 text-sm mt-1"></p>
+  </div>
+
+  <!-- Submit Button -->
+  <button
+    type="submit"
+    class="w-full bg-blue-800 text-white py-2 rounded-lg hover:bg-blue-900 transition"
+  >
+    Sign Up
+  </button>
+
+  <p class="text-sm text-center text-gray-600">
+    Already have an account?
+    <a href="?page=login" class="text-blue-700 font-semibold">Login</a>
+  </p>
+</form>
+{% endblock %}
+
+{% block scripts %}
+  <!-- Toastify CDN -->
+  <script src="https://cdn.jsdelivr.net/npm/toastify-js"></script>
+
+  <script>
+    const form = document.getElementById("signupForm");
+
+    form.addEventListener("submit", (e) => {
+      e.preventDefault();
+
+      const name = document.getElementById("name");
+      const email = document.getElementById("email");
+      const password = document.getElementById("password");
+      const confirmPassword = document.getElementById("confirmPassword");
+
+      const nameError = document.getElementById("nameError");
+      const emailError = document.getElementById("emailError");
+      const passwordError = document.getElementById("passwordError");
+      const confirmPasswordError = document.getElementById("confirmPasswordError");
+
+      // Reset errors
+      [nameError, emailError, passwordError, confirmPasswordError].forEach(err => {
+        err.classList.add("hidden");
+        err.textContent = "";
+      });
+
+      let valid = true;
+
+      // Validation logic
+      if (!name.value.trim()) {
+        nameError.textContent = "Full name is required";
+        nameError.classList.remove("hidden");
+        valid = false;
+      }
+
+      if (!email.value.trim()) {
+        emailError.textContent = "Email is required";
+        emailError.classList.remove("hidden");
+        valid = false;
+      } else if (!/\S+@\S+\.\S+/.test(email.value)) {
+        emailError.textContent = "Please enter a valid email";
+        emailError.classList.remove("hidden");
+        valid = false;
+      }
+
+      if (!password.value.trim()) {
+        passwordError.textContent = "Password is required";
+        passwordError.classList.remove("hidden");
+        valid = false;
+      }
+
+      if (!confirmPassword.value.trim()) {
+        confirmPasswordError.textContent = "Please confirm your password";
+        confirmPasswordError.classList.remove("hidden");
+        valid = false;
+      } else if (password.value !== confirmPassword.value) {
+        confirmPasswordError.textContent = "Passwords do not match";
+        confirmPasswordError.classList.remove("hidden");
+        valid = false;
+      }
+
+      if (!valid) {
+        Toastify({
+          text: "Please fix the highlighted errors.",
+          duration: 3000,
+          gravity: "top",
+          position: "right",
+          backgroundColor: "#DC2626", // red
+        }).showToast();
+        return;
+      }
+
+      // Mock signup success
+      localStorage.setItem("ticketapp_session", "mock_token");
+
+      Toastify({
+        text: "Signup successful! Redirecting...",
+        duration: 2000,
+        gravity: "top",
+        position: "right",
+        backgroundColor: "#1E40AF", // deep blue
+      }).showToast();
+
+      setTimeout(() => {
+        window.location.href = "?page=dashboard";
+      }, 1000);
+    });
+  </script>
+{% endblock %}
