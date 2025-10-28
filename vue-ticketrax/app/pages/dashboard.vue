@@ -67,6 +67,7 @@ const logout = () => {
 
   sessionCookie.value = null; 
 
+
   // localStorage.removeItem("ticketapp_session");
   router.push("/");
 };
