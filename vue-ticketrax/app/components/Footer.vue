@@ -1,5 +1,5 @@
 <template>
-  <footer class="bg-blue-900 backdrop-blur-md border-t border-white/20 mt-20 py-8 text-center text-white">
+  <footer id="footer" class="bg-blue-900 backdrop-blur-md border-t border-white/20 mt-20 py-8 text-center text-white">
     <div class="max-w-6xl mx-auto px-6">
       <!-- Top Section: Navigation Links -->
       <div class="flex flex-col md:flex-row justify-between items-center gap-6 mb-6">
