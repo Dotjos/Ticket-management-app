@@ -2,17 +2,41 @@
   x-data="{ 
     isOpen: false,
     toggleMenu() {
-      this.isOpen = !this.isOpen;
-      document.body.style.overflow = this.isOpen ? 'hidden' : '';
-      const main = document.querySelector('main');
-      if (main) main.style.filter = this.isOpen ? 'blur(8px)' : '';
-    },
-    closeMenu() {
+  this.isOpen = !this.isOpen;
+  document.body.style.overflow = this.isOpen ? 'hidden' : '';
+
+  const sections = document.querySelectorAll('main, footer');
+  sections.forEach(el => el.style.filter = this.isOpen ? 'blur(8px)' : '');
+
+  // ✅ Clear blur automatically when resizing to desktop
+  const handleResize = () => {
+    if (window.innerWidth >= 768) {
       this.isOpen = false;
       document.body.style.overflow = '';
-      const main = document.querySelector('main');
-      if (main) main.style.filter = '';
+      sections.forEach(el => el.style.filter = '');
     }
+  };
+
+  // Remove any previous listener to prevent duplicates
+  window.removeEventListener('resize', this._resizeHandler);
+  this._resizeHandler = handleResize;
+  window.addEventListener('resize', this._resizeHandler);
+},
+
+closeMenu() {
+  this.isOpen = false;
+  document.body.style.overflow = '';
+
+  const sections = document.querySelectorAll('main, footer');
+  sections.forEach(el => el.style.filter = '');
+
+  // Clean up resize listener
+  if (this._resizeHandler) {
+    window.removeEventListener('resize', this._resizeHandler);
+    this._resizeHandler = null;
+  }
+}
+
   }" 
   class="fixed top-4 left-1/2 -translate-x-1/2 z-50 w-full max-w-[1200px] px-4"
 >
@@ -26,7 +50,7 @@
     <ul class="hidden md:flex items-center gap-8 text-sm">
       <li><a href="#home" class="hover:text-blue-300 transition">Home</a></li>
       <li><a href="#features" class="hover:text-blue-300 transition">Features</a></li>
-      <li><a href="/tickets" class="hover:text-blue-300 transition">Tickets</a></li>
+      <li><a href="?page=tickets" class="hover:text-blue-300 transition">Tickets</a></li>
     </ul>
 
     <!-- CTA Buttons (Desktop) -->
@@ -62,7 +86,7 @@
   <div 
     x-show="isOpen"
     x-transition.opacity
-    class="fixed inset-0 md:hidden"
+    class="fixed menu-container inset-0 md:hidden"
     @click="closeMenu()"
   ></div>
 
@@ -71,11 +95,11 @@
     x-show="isOpen"
     x-transition
     @click.away="closeMenu()"
-    class="md:hidden mt-2 bg-deep-blue backdrop-blur-md border border-white/20 rounded-2xl shadow-lg py-4 px-6 text-white text-sm space-y-3 relative z-50"
+    class=" md:hidden mt-2 bg-deep-blue backdrop-blur-md border border-white/20 rounded-2xl shadow-lg py-4 px-6 text-white text-sm space-y-3 relative z-50"
   >
     <a href="#home" @click="closeMenu()" class="block hover:text-blue-300 transition">Home</a>
     <a href="#features" @click="closeMenu()" class="block hover:text-blue-300 transition">Features</a>
-    <a href="/tickets" @click="closeMenu()" class="block hover:text-blue-300 transition">Tickets</a>
+    <a href="/?page=tickets" @click="closeMenu()" class="block hover:text-blue-300 transition">Tickets</a>
 
     <!-- CTA Buttons (Mobile) -->
     <div class="pt-3 border-t flex flex-col text-white border-white/20 space-y-2">

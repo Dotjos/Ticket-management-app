@@ -17,11 +17,11 @@
         theme: {
           extend: {
             colors: {
-              'deep-blue': '#001F3F',
+              'deep-blue': 'oklch(42.4% 0.199 265.638)',
               'blue-900': '#1E3A8A',
             },
             backgroundImage: {
-              'gradient-blue': 'linear-gradient(to bottom, #001F3F, #1E3A8A)',
+              'gradient-blue': 'linear-gradient(to bottom, oklch(42.4% 0.199 265.638), #1E3A8A)',
             },
           },
         },
@@ -39,7 +39,7 @@
   <body class="text-white">
     {% include 'components/navbar.twig' %}
 
-    <main>
+    <main class="relative">
       {% block content %}{% endblock %}
     </main>
 
