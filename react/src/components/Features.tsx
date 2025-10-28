@@ -30,7 +30,7 @@ export default function FeaturesSection() {
         {features.map((feature, index) => (
           <div
             key={index}
-            className="bg-deep-blue backdrop-blur-md border border-white/20 
+            className="bg-blue-800 backdrop-blur-md border border-white/20 
                        rounded-2xl shadow-lg p-6 hover:scale-105 transition 
                        duration-300 ease-in-out"
           >

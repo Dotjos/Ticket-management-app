@@ -146,14 +146,14 @@ const Signup: React.FC = () => {
 
       <button
         type="submit"
-        className="w-full bg-deep-blue text-white py-2 rounded-lg hover:bg-blue-800 transition"
+        className="w-full bg-blue-800 text-white py-2 rounded-lg hover:bg-blue-800 transition"
       >
         Sign Up
       </button>
 
       <p className="text-sm text-center text-gray-600">
-        Already have an account?{" "}
-        <NavLink className="text-deep-blue font-semibold" to="/auth/login">
+        Already have an account?
+        <NavLink className="text-blue-800 font-semibold" to="/auth/login">
           Login
         </NavLink>
       </p>

@@ -24,7 +24,7 @@ const AuthLayout: React.FC = () => {
 
       {/* Auth Card */}
       <div className="relative z-10 w-[90%] max-w-md bg-white/80 backdrop-blur-md shadow-lg rounded-2xl p-8">
-        <h1 className="text-2xl font-bold text-center text-deep-blue mb-6">
+        <h1 className="text-2xl font-bold text-center text-blue-800 mb-6">
           Ticketrax
         </h1>
         <Outlet /> {/* 👈 renders Login or Signup */}
