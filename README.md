@@ -2,7 +2,7 @@
 
 Ticketrax is a simple **ticket management web app** built using three different frontend technologies — **React**, **Vue**, and **Twig (PHP)** — to showcase modular frontend development and deployment practices.
 
-## 🧠 Overview
+## Overview
 
 Each version of Ticketrax allows users to:
 
