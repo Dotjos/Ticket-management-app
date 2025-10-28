@@ -58,6 +58,14 @@
   </div>
 
   <script>
+    const SESSION_KEY = "ticketapp_session";
+  const session = localStorage.getItem(SESSION_KEY);
+
+  if (!session || session !== "mock_token") {
+    // User is not logged in, redirect to login
+    window.location.href = "?page=login";
+  }
+
     const STORAGE_KEY = "ticketapp_tickets";
 
     function getTickets() {
