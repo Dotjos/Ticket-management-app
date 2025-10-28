@@ -1,7 +1,7 @@
 <template>
   <section
     id="features"
-    class="max-w-6xl mx-auto px-6 py-20 text-center text-white"
+    class="max-w-6xl bg-white mx-auto px-6 py-20 text-center text-white"
   >
     <h2 class="text-3xl font-bold mb-12 text-deep-blue">App Features</h2>
 
