@@ -8,7 +8,8 @@ This version demonstrates how the same UI/UX can be implemented using server-ren
 - Twig templating
 - PHP 8+
 - TailwindCSS (CDN)
-- Toastify for notifications
+- alpine js(CDN)
+- Toastify for notifications(CDN)
 
 ### Running Locally
 
