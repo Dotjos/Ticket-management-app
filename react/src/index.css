@@ -1,3 +1,5 @@
+@import url('https://fonts.googleapis.com/css2?family=Inconsolata:wght@200..900&display=swap');
+
 @import "tailwindcss";
 
 @theme {
@@ -10,6 +12,7 @@ html {
 }
 
 body {
+  font-family: "Inconsolata", sans-serif;
   max-width: 1440px;       /* constrain width */
   margin: 0 auto;           /* center it horizontally */
   min-height: 100vh;        /* full viewport height */

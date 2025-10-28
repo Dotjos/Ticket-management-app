@@ -15,11 +15,17 @@ const toaster: ToasterProps = {
 </template>
 
 <style>
+@import url('https://fonts.googleapis.com/css2?family=Inconsolata:wght@200..900&display=swap');
 @import "tailwindcss";
 @import "@nuxt/ui";
 
 html{
   scroll-behavior: smooth;
+}
+
+body{ font-family: "Inconsolata", sans-serif;
+background-color: white;
+
 }
 
 @theme {
