@@ -67,18 +67,75 @@
   </nav>
 </template>
 
+
 <script setup>
-import { ref } from "vue";
+import { ref, onMounted, onBeforeUnmount } from "vue";
 import NavList from "./NavList.vue";
-import { Menu as MenuIcon, X as XIcon } from "lucide-vue-next"; // ✅ lucide icons for Vue
+import { Home, Menu as MenuIcon, X as XIcon } from "lucide-vue-next";
 
 const isOpen = ref(false);
 
 const toggleMenu = () => {
   isOpen.value = !isOpen.value;
+  updateBlur();
 };
 
 const closeMenu = () => {
   isOpen.value = false;
+  updateBlur();
 };
+
+// 🧠 Function to blur main + footer when menu opens (mobile only)
+
+
+const updateBlur = () => {
+  const sections = [
+    document.querySelector("#home"),
+    document.querySelector("#features"),
+    document.querySelector("footer"),
+  ];
+
+
+  if (isOpen.value && window.innerWidth < 768) {
+    sections.forEach((el) => {
+      if (el) el.style.filter = "blur(8px)";
+      if (el) {
+        // Attach click listener to close the menu when section is clicked
+        el.addEventListener("click", closeMenu);
+      }
+    });
+    document.body.style.overflow = "hidden"; // Prevent scroll
+  } else {
+    sections.forEach((el) => {
+      if (el) el.style.filter = "";
+      if (el) {
+        // Remove event listener when menu closes
+        el.removeEventListener("click", closeMenu);
+      }
+    });
+    document.body.style.overflow = "";
+  }
+};
+
+
+
+
+
+// 🧩 Automatically clear blur + reset menu when viewport ≥768px
+const handleResize = () => {
+  if (window.innerWidth >= 768 && isOpen.value) {
+    isOpen.value = false;
+    updateBlur();
+  }
+};
+
+onMounted(() => {
+  window.addEventListener("resize", handleResize);
+});
+
+onBeforeUnmount(() => {
+  window.removeEventListener("resize", handleResize);
+});
 </script>
+
+

@@ -1,7 +1,8 @@
 <template>
   <section class="min-h-screen relative bg-linear-to-b from-blue-800 to-blue-900 text-white overflow-hidden">
     <!-- Decorative Circles -->
-    <div class="absolute bottom-20 right-10 w-60 h-60 rounded-full bg-indigo-500/40 shadow-2xl"></div>
+
+    <div class="absolute shadow-2xl rounded-full bg-indigo-500/40 w-60 h-60 md:bottom-20 md:right-10 md:translate-x-0 md:translate-y-0 left-1/2 top-1/2 -translate-x-1/2 -translate-y-1/2 md:left-auto md:top-auto"></div>
 
     <Navbar />
 
@@ -41,7 +42,7 @@
 </template>
 
 
-  
+
   <script setup>
   import Navbar from "~/components/Navbar.vue";
   import Footer from "~/components/Footer.vue";
