@@ -1,4 +1,5 @@
 "use client";
+import { NavLink } from "react-router";
 import FeaturesSection from "../components/Features";
 import Footer from "../components/Footer";
 import Navbar from "../components/Navbar";
@@ -6,9 +7,17 @@ import Navbar from "../components/Navbar";
 const HomePage = () => {
   return (
     <>
-      <section className="min-h-screen relative bg-linear-to-b from-deep-blue to-blue-900 text-white overflow-hidden">
-        {/* <!-- Decorative Circles --> */}
-        <div className="absolute bottom-20 right-10 w-60 h-60 rounded-full bg-indigo-500/40 shadow-2xl"></div>
+      <section className="min-h-screen relative bg-linear-to-b from-blue-800 to-blue-900 text-white overflow-hidden">
+        <div
+          className="
+    absolute shadow-2xl rounded-full bg-indigo-500/40 
+    w-60 h-60
+    md:bottom-20 md:right-10 
+    md:translate-x-0 md:translate-y-0
+    left-1/2 top-1/2 -translate-x-1/2 -translate-y-1/2 
+    md:left-auto md:top-auto
+  "
+        ></div>
 
         <Navbar />
 
@@ -21,9 +30,12 @@ const HomePage = () => {
           <p className="text-lg max-w-xl mb-6">
             Manage, track, and resolve tickets efficiently — across all teams.
           </p>
-          <button className="bg-white text-deep-blue font-semibold px-6 py-3 rounded-full shadow hover:bg-gray-100 transition">
+          <NavLink
+            to="auth/signup"
+            className="bg-white text-deep-blue font-semibold px-6 py-3 rounded-full shadow hover:bg-gray-100 transition"
+          >
             Get Started
-          </button>
+          </NavLink>
         </div>
 
         {/* <!-- SVG Wave at Bottom --> */}

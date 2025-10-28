@@ -1,8 +1,9 @@
+import { NavLink } from "react-router";
 import NavList from "./NavList";
 
 export default function Footer() {
   return (
-    <footer className="bg-blue-900 backdrop-blur-md border-t border-white/20 mt-20 py-8 text-center text-white">
+    <footer className="bg-blue-800 backdrop-blur-md border-t border-white/20 mt-20 py-8 text-center text-white">
       <div className="max-w-6xl mx-auto px-6">
         {/* Top Section: Navigation Links */}
         <div className="flex flex-col md:flex-row justify-between items-center gap-6 mb-6">
@@ -11,12 +12,13 @@ export default function Footer() {
           <NavList />
 
           {/* CTA */}
-          <a
-            href="#get-started"
-            className="px-5 py-2 rounded-full bg-blue-400 text-white hover:bg-blue-500 transition text-sm"
+          <NavLink
+            to="/auth/signup"
+            className="px-5 py-2 rounded-full bg-blue-400
+            text-white hover:bg-blue-500 transition text-sm"
           >
             Get Started
-          </a>
+          </NavLink>
         </div>
 
         {/* Divider */}
